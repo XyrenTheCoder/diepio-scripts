@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Diep.io Banner Overwrite
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.2
 // @description  Replace with my banner on diep.io after the page loads.
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
@@ -10,77 +10,112 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
+    "use strict";
 
-    const variables = {
-        default: "https://diep.io/35cb845c87f7f2a6a9fc.jpg",
-        dark3D: 'https://ik.imagekit.io/hxvezoqrx/IMG_6394.png?updatedAt=1744534591325',
-        light3D: 'https://ik.imagekit.io/hxvezoqrx/IMG_6395.png?updatedAt=1744534591186',
+    const allthemes = {
+        Default: "https://diep.io/35cb845c87f7f2a6a9fc.jpg",
+        Dark3D: "https://ik.imagekit.io/hxvezoqrx/IMG_6394.png?updatedAt=1744534591325",
+        Light3D: "https://ik.imagekit.io/hxvezoqrx/IMG_6395.png?updatedAt=1744534591186",
     };
 
-    const container = document.createElement('div');
+    const colors = {
+        DarkGrey: "#1C1C1C",
+        Grey: "#303030",
+        LightGrey: "#606060",
+        DimmedWhite: "#C6C6C6",
+        White: "#DDDDDD"
+    }
 
-    container.style.position = 'fixed';
-    container.style.top = '50px';
-    container.style.right = '10px';
+
+    // User interface container
+    const container = document.createElement("div");
+    container.style.position = "fixed";
+    container.style.top = "5px";
+    container.style.right = "150px";
     container.style.zIndex = 999;
+    container.style.width = "300px";
+    container.style.borderRadius = "0.5rem";
+    container.style.backgroundColor = colors.DarkGrey;
+    container.style.padding = "0px 20px";
 
-    container.style.width = "100px";
-    container.style.height = "100px";
 
-    const menu = document.createElement('select');
+    // Label
+    const label = document.createElement("div");
+    label.style.margin = "15px 0px 15px 0px";
+    label.style.color = colors.White;
+    label.innerText = "Banner Themes";
+    label.style.font = "500 16px Inter";
 
-    menu.style.position = 'fixed';
-    menu.style.top = '50px';
-    menu.style.right = '10px';
-    menu.style.zIndex = 1000;
+    // HR
+    const hr = document.createElement("hr");
+    hr.style.border = `1px solid ${colors.LightGrey}`;
+    hr.style.margin = "10px -20px 10px -20px";
 
-    menu.style.backgroundColor = "black";
-    menu.style.border = "1px solid black";
-    menu.style.padding = '10px';
-    menu.style.color = "white";
 
-    for (const [key] of Object.entries(variables)) {
-        const option = document.createElement('option');
+    // Dropdown menu
+    const menu = document.createElement("select");
+    menu.style.backgroundColor = colors.Grey;
+    menu.style.border = `1px solid ${colors.LightGrey}`;
+    menu.style.borderRadius = "0.5rem";
+    menu.style.padding = "10px";
+    menu.style.margin = "5px 0px";
+    menu.style.color = colors.White;
+    menu.style.font = "500 16px Ubuntu";
+    menu.style.cursor = "pointer";
 
+
+    // Mount options
+    for (const [key] of Object.entries(allthemes)) {
+        const option = document.createElement("option");
         option.value = key;
         option.textContent = key;
         menu.appendChild(option);
     }
 
-    const displayDiv = document.createElement('div');
 
-    displayDiv.style.position = 'fixed';
-    displayDiv.style.top = '100px';
-    displayDiv.style.right = '10px';
-    displayDiv.style.zIndex = 1000;
+    // Show link (debug)
+    const debug = document.createElement("div");
+    debug.style.backgroundColor = colors.Grey;
+    debug.style.padding = "10px";
+    debug.style.color = "white";
+    debug.style.font = "500 12px Ubuntu";
 
-    displayDiv.style.backgroundColor = 'black';
-    displayDiv.style.border = "1px solid black";
-    displayDiv.style.padding = '10px';
 
+    // Image preview
+    const imagePreview = document.createElement("img");
+    imagePreview.style.width = "100%";
+    imagePreview.style.margin = "20px 0px";
+    imagePreview.style.border = "1px solid white";
+    imagePreview.alt = "Banner Preview";
+
+
+    // Update UI & overwrite banner
     function updateDisplay() {
         const selected = menu.value;
-        const theme = variables[selected];
+        const theme = allthemes[selected];
 
-        displayDiv.textContent = theme;
+        debug.textContent = `(!Debug) Link: ${theme}`;
         localStorage.setItem("selected", selected);
         replaceBackgroundImage(theme);
-
-        container.appendChild = menu;
-        container.appendChild = displayDiv;
+        imagePreview.src = theme;
     }
 
-    const selected = localStorage.getItem("selected");
 
-    if (selected && variables[selected]) {
+    const selected = localStorage.getItem("selected");
+    if (selected && allthemes[selected]) {
         menu.value = selected;
     }
 
-    menu.addEventListener('change', updateDisplay);
+    menu.addEventListener("change", updateDisplay);
 
-    document.body.appendChild(menu);
-    document.body.appendChild(displayDiv);
+    container.appendChild(label);
+    container.appendChild(hr);
+    container.appendChild(menu);
+    container.appendChild(imagePreview);
+    // container.appendChild(debug);
+
+
+    document.body.appendChild(container);
 
     function replaceBackgroundImage(img) {
         const nodeList = document.querySelectorAll("img");
@@ -93,5 +128,5 @@
         }
     }
 
-    window.addEventListener('load', updateDisplay);
+    window.addEventListener("load", updateDisplay);
 })();
