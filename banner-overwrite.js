@@ -14,8 +14,8 @@
 
     function replaceBackgroundImage() {
         const nodeList= document.querySelectorAll("img");
-        nodeList[2].src = "https://cdn.discordapp.com/attachments/1353542166789619772/1360537953671188680/IMG_6394.png?ex=67fc23f5&is=67fad275&hm=a4aa873209fa247213b39acab47dd3cd5117a31cdf07856bce14bb38d7a5c871&";
-        document.getElementById("backdrop-asset").src = "https://cdn.discordapp.com/attachments/1353542166789619772/1360537953671188680/IMG_6394.png?ex=67fc23f5&is=67fad275&hm=a4aa873209fa247213b39acab47dd3cd5117a31cdf07856bce14bb38d7a5c871&";
+        nodeList[2].src = "https://ik.imagekit.io/hxvezoqrx/IMG_6394.png?updatedAt=1744534591325s";
+        document.getElementById("backdrop-asset").src = "https://ik.imagekit.io/hxvezoqrx/IMG_6394.png?updatedAt=1744534591325";
     }
 
     window.addEventListener('load', function() {
