@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Diep.io Banner Overwrite
 // @namespace    http://tampermonkey.net/
-// @version      2.2
+// @version      2.3
 // @description  Replace with my banner on diep.io after the page loads.
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
@@ -24,10 +24,8 @@
         LightGrey: "#606060",
         DimmedWhite: "#C6C6C6",
         White: "#DDDDDD"
-    }
+    };
 
-
-    // User interface container
     const container = document.createElement("div");
     container.style.position = "fixed";
     container.style.top = "5px";
@@ -38,21 +36,16 @@
     container.style.backgroundColor = colors.DarkGrey;
     container.style.padding = "0px 20px";
 
-
-    // Label
     const label = document.createElement("div");
     label.style.margin = "15px 0px 15px 0px";
     label.style.color = colors.White;
     label.innerText = "Banner Themes";
     label.style.font = "500 16px Inter";
 
-    // HR
     const hr = document.createElement("hr");
     hr.style.border = `1px solid ${colors.LightGrey}`;
     hr.style.margin = "10px -20px 10px -20px";
 
-
-    // Dropdown menu
     const menu = document.createElement("select");
     menu.style.backgroundColor = colors.Grey;
     menu.style.border = `1px solid ${colors.LightGrey}`;
@@ -63,8 +56,12 @@
     menu.style.font = "500 16px Ubuntu";
     menu.style.cursor = "pointer";
 
+    const imagePreview = document.createElement("img");
+    imagePreview.style.width = "100%";
+    imagePreview.style.margin = "20px 0px";
+    imagePreview.style.border = "1px solid white";
+    imagePreview.alt = "Banner Preview";
 
-    // Mount options
     for (const [key] of Object.entries(allthemes)) {
         const option = document.createElement("option");
         option.value = key;
@@ -72,50 +69,18 @@
         menu.appendChild(option);
     }
 
-
-    // Show link (debug)
-    const debug = document.createElement("div");
-    debug.style.backgroundColor = colors.Grey;
-    debug.style.padding = "10px";
-    debug.style.color = "white";
-    debug.style.font = "500 12px Ubuntu";
-
-
-    // Image preview
-    const imagePreview = document.createElement("img");
-    imagePreview.style.width = "100%";
-    imagePreview.style.margin = "20px 0px";
-    imagePreview.style.border = "1px solid white";
-    imagePreview.alt = "Banner Preview";
-
-
-    // Update UI & overwrite banner
-    function updateDisplay() {
-        const selected = menu.value;
-        const theme = allthemes[selected];
-
-        debug.textContent = `(!Debug) Link: ${theme}`;
-        localStorage.setItem("selected", selected);
-        replaceBackgroundImage(theme);
-        imagePreview.src = theme;
-    }
-
-
     const selected = localStorage.getItem("selected");
     if (selected && allthemes[selected]) {
         menu.value = selected;
     }
 
-    menu.addEventListener("change", updateDisplay);
-
-    container.appendChild(label);
-    container.appendChild(hr);
-    container.appendChild(menu);
-    container.appendChild(imagePreview);
-    // container.appendChild(debug);
-
-
-    document.body.appendChild(container);
+    function updateDisplay() {
+        const selected = menu.value;
+        const theme = allthemes[selected];
+        localStorage.setItem("selected", selected);
+        replaceBackgroundImage(theme);
+        imagePreview.src = theme;
+    }
 
     function replaceBackgroundImage(img) {
         const nodeList = document.querySelectorAll("img");
@@ -127,6 +92,30 @@
             backdrop.src = img;
         }
     }
+
+    function toggleUI() {
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
+        } else {
+            container.style.display = 'none';
+        }
+    }
+
+    menu.addEventListener("change", updateDisplay);
+
+    container.appendChild(label);
+    container.appendChild(hr);
+    container.appendChild(menu);
+    container.appendChild(imagePreview);
+
+    document.body.appendChild(container);
+
+    window.addEventListener('keydown', (event) => {
+        if (event.altKey && event.key === 'p') {
+            event.preventDefault();
+            toggleUI();
+        }
+    });
 
     window.addEventListener("load", updateDisplay);
 })();
