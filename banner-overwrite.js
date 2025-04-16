@@ -96,10 +96,10 @@
     }
 
     function toggleUI() {
-        if (container.style.display === 'none' || container.style.display === '') {
-            container.style.display = 'block';
+        if (container.style.display === "none" || container.style.display === "") {
+            container.style.display = "block";
         } else {
-            container.style.display = 'none';
+            container.style.display = "none";
         }
     }
 
@@ -113,7 +113,7 @@
     document.body.appendChild(container);
 
     window.addEventListener('keydown', (event) => {
-        if (event.altKey && event.key === 'p') {
+        if (event.altKey && event.key === "p") {
             event.preventDefault();
             toggleUI();
         }
