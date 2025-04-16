@@ -2,7 +2,7 @@
 // @name         Diep.io Banner Overwrite
 // @namespace    http://tampermonkey.net/
 // @version      2.3
-// @description  Replace with my banner on diep.io after the page loads.
+// @description  Replace with my banner on diep.io after the page loads. Press ALT+P to hide/ toggle UI.
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=diep.io
