@@ -16,6 +16,8 @@
         Default: "https://diep.io/35cb845c87f7f2a6a9fc.jpg",
         Dark3D: "https://ik.imagekit.io/hxvezoqrx/IMG_6394.png?updatedAt=1744534591325",
         Light3D: "https://ik.imagekit.io/hxvezoqrx/IMG_6395.png?updatedAt=1744534591186",
+        Dark2D: "https://ik.imagekit.io/as7ksk9qe/IMG_6550.png?updatedAt=1744808721680",
+        Light2D: "https://ik.imagekit.io/as7ksk9qe/IMG_6549.png?updatedAt=1744808721612"
     };
 
     const colors = {
