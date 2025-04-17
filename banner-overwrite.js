@@ -2,7 +2,7 @@
 // @name         Diep.io Banner Overwrite
 // @namespace    http://tampermonkey.net/
 // @version      2.3
-// @description  Replace with my banner on Diep.io after the page loads. Press ALT+P to hide/ toggle UI.
+// @description  Replace with my banner on diep.io after the page loads. Press ALT+P to hide/ toggle UI.
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=diep.io
@@ -12,7 +12,7 @@
 (function () {
     "use strict";
 
-    const allthemes = { // Approved by Mistik?
+    const allthemes = {
         Default: "https://diep.io/35cb845c87f7f2a6a9fc.jpg",
         Dark3D: "https://ik.imagekit.io/hxvezoqrx/IMG_6394.png?updatedAt=1744534591325",
         Light3D: "https://ik.imagekit.io/hxvezoqrx/IMG_6395.png?updatedAt=1744534591186",
@@ -50,6 +50,7 @@
 
     const menu = document.createElement("select");
     menu.style.backgroundColor = colors.Grey;
+    menu.style.width = "300px";
     menu.style.border = `1px solid ${colors.LightGrey}`;
     menu.style.borderRadius = "0.5rem";
     menu.style.padding = "10px";
@@ -61,7 +62,7 @@
     const imagePreview = document.createElement("img");
     imagePreview.style.width = "100%";
     imagePreview.style.margin = "20px 0px";
-    imagePreview.style.border = "1px solid white";
+    imagePreview.style.border = "0px solid white";
     imagePreview.alt = "Banner Preview";
 
     for (const [key] of Object.entries(allthemes)) {
@@ -96,10 +97,10 @@
     }
 
     function toggleUI() {
-        if (container.style.display === "none" || container.style.display === "") {
-            container.style.display = "block";
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
         } else {
-            container.style.display = "none";
+            container.style.display = 'none';
         }
     }
 
@@ -113,7 +114,7 @@
     document.body.appendChild(container);
 
     window.addEventListener('keydown', (event) => {
-        if (event.altKey && event.key === "p") {
+        if (event.altKey && event.key === 'p') {
             event.preventDefault();
             toggleUI();
         }
