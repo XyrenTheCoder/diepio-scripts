@@ -61,7 +61,7 @@
 
     const imagePreview = document.createElement("img");
     imagePreview.style.width = "100%";
-    imagePreview.style.margin = "20px 0px";
+    imagePreview.style.margin = "10px 0px 20px 0px";
     imagePreview.style.border = "0px solid white";
     imagePreview.alt = "Banner Preview";
 
