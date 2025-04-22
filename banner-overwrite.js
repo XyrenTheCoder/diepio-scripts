@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Diep.io Banner Overwrite
 // @namespace    http://tampermonkey.net/
-// @version      2.4
+// @version      2.5
 // @description  Replace with my banner on diep.io after the page loads. Press ALT+P to hide/ toggle UI.
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
@@ -19,7 +19,14 @@
         Dark2D: "https://ik.imagekit.io/as7ksk9qe/IMG_6550.png?updatedAt=1744808721680",
         Light2D: "https://ik.imagekit.io/as7ksk9qe/IMG_6549.png?updatedAt=1744808721612",
         OGLight: "https://ik.imagekit.io/as7ksk9qe/IMG_6728.png?updatedAt=1745061276240",
-        OGDark: "https://ik.imagekit.io/as7ksk9qe/IMG_6727.jpg?updatedAt=1745061276192"
+        OGDark: "https://ik.imagekit.io/as7ksk9qe/IMG_6727.jpg?updatedAt=1745061276192",
+        Submission1: "https://ik.imagekit.io/as7ksk9qe/submission1.png",
+        Submission2: "https://ik.imagekit.io/as7ksk9qe/submission2.jpg",
+        Submission3: "https://ik.imagekit.io/as7ksk9qe/submission3.png",
+        Submission4: "https://ik.imagekit.io/as7ksk9qe/submission4.png",
+        Submission5: "https://ik.imagekit.io/as7ksk9qe/submission5.jpg",
+        Submission6: "https://ik.imagekit.io/as7ksk9qe/submission6.png",
+        Submission7: "https://ik.imagekit.io/as7ksk9qe/submission7.png"
     };
 
     const colors = {
