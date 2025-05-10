@@ -1,6 +1,6 @@
 # Credits
 
-- Diep Theme by Clever Yeti: https://github.com/CleverYeti/diep-themes/blob/main/diep-themes.js
+- [Diep Theme by Clever Yeti](https://github.com/CleverYeti/diep-themes/blob/main/diep-themes.js)
 
 ## Customised
 
