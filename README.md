@@ -1,5 +1,9 @@
-# credits
+# Credits
 
-- Diep Theme by CleverYeti: https://github.com/CleverYeti/diep-themes/blob/main/diep-themes.js
+- Diep Theme by Clever Yeti: https://github.com/CleverYeti/diep-themes/blob/main/diep-themes.js
 
-- Banner Overwrite by Me
+## Customised
+
+- Banner Overwrite
+
+- Show FPS and Disable Predict Movement
