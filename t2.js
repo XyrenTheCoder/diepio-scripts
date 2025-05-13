@@ -36,8 +36,8 @@
     const keysHeld = {};
     let clickSequence = [];
     const requiredClicks = [
-        { x: 56, y: 75, width: 100, height: 100 }, // Define Path area
-        { x: 56, y: 75, width: 100, height: 100 }, // Define Path area
+        { x: 156, y: 75, width: 100, height: 100 }, // Define Path area
+        { x: 156, y: 75, width: 100, height: 100 }, // Define Path area
         { x: 47, y: 75, width: 100, height: 100 }, // Define Overlord upgrade area
     ];
 
