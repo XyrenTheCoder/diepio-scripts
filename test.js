@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rotating and Moving Image Overlay with Bounce
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Overlay an image that rotates and moves smoothly, bouncing back to center on key release, with max offset
 // @author       Your Name
 // @match        *://diep.io/*
@@ -63,10 +63,11 @@
             isRotating = !isRotating;
             if (isRotating) {
                 rotateImage(); // Start rotating
+            } else {
+                updatePosition(); // Update position immediately when stopping
             }
         }
         updateMovement();
-        updatePosition();
     });
 
     // Handle keyup event
@@ -112,8 +113,8 @@
     function smoothBounceBack() {
         const bounceBack = () => {
             if (Math.abs(offsetX) > 0.1 || Math.abs(offsetY) > 0.1) {
-                offsetX *= 0.9; // Dampen the offset
-                offsetY *= 0.9; // Dampen the offset
+                offsetX *= 0.99; // Dampen the offset
+                offsetY *= 0.99; // Dampen the offset
                 updatePosition();
                 requestAnimationFrame(bounceBack); // Continue bouncing back
             } else {
