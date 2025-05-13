@@ -2,7 +2,7 @@
 // @name         Cosmetic Overlay
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Play as your own Diep.io OC!
+// @description  Play as your own Diep.io OC!  (currently available for overlords only)
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=diep.io
