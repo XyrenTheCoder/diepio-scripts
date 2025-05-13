@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rotating and Moving Image Overlay with Bounce
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Overlay an image that rotates and moves smoothly, bouncing back to center on key release, with max offset
 // @author       Your Name
 // @match        *://diep.io/*
@@ -26,7 +26,7 @@
 
     let isRotating = false;
     let rotationAngle = 0;
-    const movementSpeed = 30; // Set movement speed
+    const maxSpeed = 25; // Maximum speed for smoother movement
     const maxOffset = 150; // Maximum offset in pixels
     let offsetX = 0;
     let offsetY = 0;
@@ -66,6 +66,7 @@
             }
         }
         updateMovement();
+        updatePosition();
     });
 
     // Handle keyup event
@@ -76,44 +77,26 @@
 
     // Update movement based on held keys
     function updateMovement() {
-        // Reset offsets
-        offsetX = 0;
-        offsetY = 0;
+        // Calculate target offsets based on held keys
+        let targetX = 0;
+        let targetY = 0;
 
         if (keysHeld['w'] || keysHeld['W']) {
-            offsetY -= movementSpeed; // Move up
+            targetY -= maxSpeed; // Move up
         }
         if (keysHeld['s'] || keysHeld['S']) {
-            offsetY += movementSpeed; // Move down
+            targetY += maxSpeed; // Move down
         }
         if (keysHeld['a'] || keysHeld['A']) {
-            offsetX -= movementSpeed; // Move left
+            targetX -= maxSpeed; // Move left
         }
         if (keysHeld['d'] || keysHeld['D']) {
-            offsetX += movementSpeed; // Move right
+            targetX += maxSpeed; // Move right
         }
 
-        // Diagonal movement logic
-        if (keysHeld['w'] || keysHeld['W']) {
-            if (keysHeld['a'] || keysHeld['A']) {
-                offsetX -= movementSpeed*0.05; // Top left
-                updatePosition();
-            }
-            if (keysHeld['d'] || keysHeld['D']) {
-                offsetX += movementSpeed*0.05; // Top right
-                updatePosition();
-            }
-        }
-        if (keysHeld['s'] || keysHeld['S']) {
-            if (keysHeld['a'] || keysHeld['A']) {
-                offsetX -= movementSpeed*0.05; // Bottom left
-                updatePosition();
-            }
-            if (keysHeld['d'] || keysHeld['D']) {
-                offsetX += movementSpeed*0.05; // Bottom right
-                updatePosition();
-            }
-        }
+        // Apply easing for smooth movement
+        offsetX += (targetX - offsetX) * 0.1;
+        offsetY += (targetY - offsetY) * 0.1;
 
         // Limit the maximum offset
         offsetX = Math.max(-maxOffset, Math.min(maxOffset, offsetX));
