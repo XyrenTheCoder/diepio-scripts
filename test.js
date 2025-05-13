@@ -26,10 +26,13 @@
 
     let isRotating = false;
     let rotationAngle = 0;
-    const movementSpeed = 7; // Set movement speed
-    const maxOffset = 20; // Maximum offset in pixels
+    const movementSpeed = 30; // Set movement speed
+    const maxOffset = 150; // Maximum offset in pixels
     let offsetX = 0;
     let offsetY = 0;
+
+    // Track currently held keys
+    const keysHeld = {};
 
     // Function to rotate the image
     function rotateImage() {
@@ -53,42 +56,71 @@
         }
     });
 
-    // Move the image based on key presses
+    // Handle keydown event
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'w' || event.key === 'W') {
-            if (offsetY > -maxOffset) offsetY -= movementSpeed; // Move up
+        keysHeld[event.key] = true; // Mark the key as held
+        if (event.key === 'c' || event.key === 'C') {
+            isRotating = !isRotating;
+            if (isRotating) {
+                rotateImage(); // Start rotating
+            }
         }
-        if (event.key === 's' || event.key === 'S') {
-            if (offsetY < maxOffset) offsetY += movementSpeed; // Move down
+        updateMovement();
+    });
+
+    // Handle keyup event
+    document.addEventListener('keyup', (event) => {
+        keysHeld[event.key] = false; // Mark the key as released
+        smoothBounceBack();
+    });
+
+    // Update movement based on held keys
+    function updateMovement() {
+        // Reset offsets
+        offsetX = 0;
+        offsetY = 0;
+
+        if (keysHeld['w'] || keysHeld['W']) {
+            offsetY -= movementSpeed; // Move up
         }
-        if (event.key === 'a' || event.key === 'A') {
-            if (offsetX > -maxOffset) offsetX -= movementSpeed; // Move left
+        if (keysHeld['s'] || keysHeld['S']) {
+            offsetY += movementSpeed; // Move down
         }
-        if (event.key === 'd' || event.key === 'D') {
-            if (offsetX < maxOffset) offsetX += movementSpeed; // Move right
+        if (keysHeld['a'] || keysHeld['A']) {
+            offsetX -= movementSpeed; // Move left
+        }
+        if (keysHeld['d'] || keysHeld['D']) {
+            offsetX += movementSpeed; // Move right
         }
 
         // Diagonal movement logic
-        if ((event.key === 'w' || event.key === 'W') && (event.key === 'a' || event.key === 'A')) {
-            offsetX -= movementSpeed; // Top left
+        if (keysHeld['w'] || keysHeld['W']) {
+            if (keysHeld['a'] || keysHeld['A']) {
+                offsetX -= movementSpeed*0.05; // Top left
+                updatePosition();
+            }
+            if (keysHeld['d'] || keysHeld['D']) {
+                offsetX += movementSpeed*0.05; // Top right
+                updatePosition();
+            }
         }
-        if ((event.key === 'w' || event.key === 'W') && (event.key === 'd' || event.key === 'D')) {
-            offsetX += movementSpeed; // Top right
+        if (keysHeld['s'] || keysHeld['S']) {
+            if (keysHeld['a'] || keysHeld['A']) {
+                offsetX -= movementSpeed*0.05; // Bottom left
+                updatePosition();
+            }
+            if (keysHeld['d'] || keysHeld['D']) {
+                offsetX += movementSpeed*0.05; // Bottom right
+                updatePosition();
+            }
         }
-        if ((event.key === 's' || event.key === 'S') && (event.key === 'a' || event.key === 'A')) {
-            offsetX -= movementSpeed; // Bottom left
-        }
-        if ((event.key === 's' || event.key === 'S') && (event.key === 'd' || event.key === 'D')) {
-            offsetX += movementSpeed; // Bottom right
-        }
+
+        // Limit the maximum offset
+        offsetX = Math.max(-maxOffset, Math.min(maxOffset, offsetX));
+        offsetY = Math.max(-maxOffset, Math.min(maxOffset, offsetY));
 
         updatePosition();
-    });
-
-    // Smoothly bounce back to center
-    document.addEventListener('keyup', () => {
-        smoothBounceBack();
-    });
+    }
 
     function updatePosition() {
         img.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) rotate(${rotationAngle}deg)`;
