@@ -37,10 +37,18 @@
 
     // Show the image when a certain area is clicked
     document.addEventListener('click', (event) => {
-        const clickArea = { x: 47, y: 75, width: 100, height: 100 }; // Define clickable area
+        const clickArea = { x: 47, y: 75, width: 100, height: 100 }; // Define Overlord upgrade area
         if (event.clientX >= clickArea.x && event.clientX <= clickArea.x + clickArea.width &&
             event.clientY >= clickArea.y && event.clientY <= clickArea.y + clickArea.height) {
             img.style.display = 'block'; // Show the image
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        const clickArea = { x: 26, y: 172, width: 190, height: 52 }; // Define Exit button area
+        if (event.clientX >= clickArea.x && event.clientX <= clickArea.x + clickArea.width &&
+            event.clientY >= clickArea.y && event.clientY <= clickArea.y + clickArea.height) {
+            img.style.display = 'none'; // Show the image
         }
     });
 
