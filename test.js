@@ -55,20 +55,33 @@
 
     // Move the image based on key presses
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'w' || event.key === 'W' || event.key === 'ArrowUp') {
-            if (offsetY > -maxOffset) offsetY -= movementSpeed;
-        } else if (event.key === 's' || event.key === 'S' || event.key === 'ArrowDown') {
-            if (offsetY < maxOffset) offsetY += movementSpeed;
-        } else if (event.key === 'a' || event.key === 'A' || event.key === 'ArrowLeft') {
-            if (offsetX > -maxOffset) offsetX -= movementSpeed;
-        } else if (event.key === 'd' || event.key === 'D' || event.key === 'ArrowRight') {
-            if (offsetX < maxOffset) offsetX += movementSpeed;
-        } else if (event.key === 'c' || event.key === 'C') {
-            isRotating = !isRotating;
-            if (isRotating) {
-                rotateImage(); // Start rotating
-            }
+        if (event.key === 'w' || event.key === 'W') {
+            if (offsetY > -maxOffset) offsetY -= movementSpeed; // Move up
         }
+        if (event.key === 's' || event.key === 'S') {
+            if (offsetY < maxOffset) offsetY += movementSpeed; // Move down
+        }
+        if (event.key === 'a' || event.key === 'A') {
+            if (offsetX > -maxOffset) offsetX -= movementSpeed; // Move left
+        }
+        if (event.key === 'd' || event.key === 'D') {
+            if (offsetX < maxOffset) offsetX += movementSpeed; // Move right
+        }
+
+        // Diagonal movement logic
+        if ((event.key === 'w' || event.key === 'W') && (event.key === 'a' || event.key === 'A')) {
+            offsetX -= movementSpeed; // Top left
+        }
+        if ((event.key === 'w' || event.key === 'W') && (event.key === 'd' || event.key === 'D')) {
+            offsetX += movementSpeed; // Top right
+        }
+        if ((event.key === 's' || event.key === 'S') && (event.key === 'a' || event.key === 'A')) {
+            offsetX -= movementSpeed; // Bottom left
+        }
+        if ((event.key === 's' || event.key === 'S') && (event.key === 'd' || event.key === 'D')) {
+            offsetX += movementSpeed; // Bottom right
+        }
+
         updatePosition();
     });
 
