@@ -36,9 +36,9 @@
     const keysHeld = {};
     let clickSequence = [];
     const requiredClicks = [
-        { x: 156, y: 75, width: 100, height: 100 }, // Define Path area
-        { x: 156, y: 75, width: 100, height: 100 }, // Define Path area
-        { x: 47, y: 75, width: 100, height: 100 }, // Define Overlord upgrade area
+        { x: 156, y: 75, width: 100, height: 100 }, // Define Sniper area
+        { x: 156, y: 75, width: 100, height: 100 }, // Define Overseer area
+        { x: 47, y: 75, width: 100, height: 100 } // Define Overlord area
     ];
 
     // Show the image based on click sequence
@@ -49,7 +49,8 @@
                 clickPos.y >= area.y && clickPos.y <= area.y + area.height) {
                 clickSequence.push(area);
                 console.log(clickSequence);
-                if (clickSequence === requiredClicks) {
+
+                if (clickSequence.join() == requiredClicks.join()) {
                     img.style.display = 'block'; // Show the image
                     clickSequence = []; // Reset the sequence
                 }
