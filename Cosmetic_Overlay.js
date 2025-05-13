@@ -1,10 +1,11 @@
 // ==UserScript==
-// @name         Rotating and Moving Image Overlay with Bounce
+// @name         Cosmetic Overlay
 // @namespace    http://tampermonkey.net/
-// @version      0.5
-// @description  Overlay an image that rotates and moves smoothly, bouncing back to center on key release, with max offset
-// @author       Your Name
+// @version      1.0
+// @description  Play as your own Diep.io OC!
+// @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=diep.io
 // @grant        none
 // ==/UserScript==
 
@@ -18,17 +19,17 @@
     img.style.top = '50%';
     img.style.left = '50%';
     img.style.transform = 'translate(-50%, -50%) rotate(0deg)';
-    img.style.pointerEvents = 'none'; // Allow clicks to pass through
-    img.style.width = '100px'; // Set desired width
-    img.style.height = '100px'; // Set desired height
-    img.style.zIndex = 999; // Ensure the image appears above other elements
-    img.style.display = 'none'; // Initially hide the image
+    img.style.pointerEvents = 'none';
+    img.style.width = '90px'; // Set desired width
+    img.style.height = '90px'; // Set desired height
+    img.style.zIndex = 999;
+    img.style.display = 'none';
     document.body.appendChild(img);
 
     let isRotating = false;
     let rotationAngle = 0;
-    const maxSpeed = 25; // Maximum speed for smoother movement
-    const maxOffset = 150; // Maximum offset in pixels
+    const maxSpeed = 25;
+    const maxOffset = 150;
     let offsetX = 0;
     let offsetY = 0;
 
@@ -51,10 +52,10 @@
                 console.log(clickSequence);
 
                 if (clickSequence.join() == requiredClicks.join()) {
-                    img.style.display = 'block'; // Show the image
-                    clickSequence = []; // Reset the sequence
+                    img.style.display = 'block';
+                    clickSequence = [];
                 }
-                return; // Exit after processing the first matched area
+                return;
             }
         }
 
@@ -62,8 +63,8 @@
         const exitArea = { x: 26, y: 172, width: 190, height: 52 }; // Define Exit button area
         if (clickPos.x >= exitArea.x && clickPos.x <= exitArea.x + exitArea.width &&
             clickPos.y >= exitArea.y && clickPos.y <= exitArea.y + exitArea.height) {
-            img.style.display = 'none'; // Hide the image
-            clickSequence = []; // Reset the sequence
+            img.style.display = 'none';
+            clickSequence = [];
         }
     });
 
@@ -91,13 +92,13 @@
 
     // Handle keydown event
     document.addEventListener('keydown', (event) => {
-        keysHeld[event.key] = true; // Mark the key as held
+        keysHeld[event.key] = true;
         if (event.key === 'c' || event.key === 'C') {
             isRotating = !isRotating;
             if (isRotating) {
-                rotateImage(); // Start rotating
+                rotateImage();
             } else {
-                updatePosition(); // Update position immediately when stopping
+                updatePosition();
             }
         }
         updateMovement();
@@ -105,7 +106,7 @@
 
     // Handle keyup event
     document.addEventListener('keyup', (event) => {
-        keysHeld[event.key] = false; // Mark the key as released
+        keysHeld[event.key] = false;
         smoothBounceBack();
     });
 
@@ -146,8 +147,8 @@
     function smoothBounceBack() {
         const bounceBack = () => {
             if (Math.abs(offsetX) > 0.1 || Math.abs(offsetY) > 0.1) {
-                offsetX *= 0.99; // Dampen the offset
-                offsetY *= 0.99; // Dampen the offset
+                offsetX *= 0.96; // Dampen the offset
+                offsetY *= 0.96; // Dampen the offset
                 updatePosition();
                 requestAnimationFrame(bounceBack); // Continue bouncing back
             } else {
