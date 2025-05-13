@@ -49,7 +49,7 @@
                 clickPos.y >= area.y && clickPos.y <= area.y + area.height) {
                 clickSequence.push(area);
                 console.log(clickSequence);
-                if (clickSequence.length === requiredClicks.length) {
+                if (clickSequence === requiredClicks) {
                     img.style.display = 'block'; // Show the image
                     clickSequence = []; // Reset the sequence
                 }
