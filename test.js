@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rotating and Moving Image Overlay with Bounce
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Overlay an image that rotates and moves smoothly, bouncing back to center on key release, with max offset
 // @author       Your Name
 // @match        *://diep.io/*
@@ -22,6 +22,7 @@
     img.style.width = '100px'; // Set desired width
     img.style.height = '100px'; // Set desired height
     img.style.zIndex = 999; // Ensure the image appears above other elements
+    img.style.display = 'none'; // Initially hide the image
     document.body.appendChild(img);
 
     let isRotating = false;
@@ -33,6 +34,15 @@
 
     // Track currently held keys
     const keysHeld = {};
+
+    // Show the image when a certain area is clicked
+    document.addEventListener('click', (event) => {
+        const clickArea = { x: 47, y: 75, width: 100, height: 100 }; // Define clickable area
+        if (event.clientX >= clickArea.x && event.clientX <= clickArea.x + clickArea.width &&
+            event.clientY >= clickArea.y && event.clientY <= clickArea.y + clickArea.height) {
+            img.style.display = 'block'; // Show the image
+        }
+    });
 
     // Function to rotate the image
     function rotateImage() {
