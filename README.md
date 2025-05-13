@@ -6,4 +6,6 @@
 
 - Banner Overwrite
 
+- Cosmetic Overlay
+  
 - Show FPS and Disable Predict Movement
