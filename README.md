@@ -7,5 +7,7 @@
 - Banner Overwrite
 
 - Cosmetic Overlay
+
+- Custom Cursor
   
 - Show FPS and Disable Predict Movement
