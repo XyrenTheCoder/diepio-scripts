@@ -27,7 +27,7 @@
 
 
     document.addEventListener('mousedown', function(event) {
-        event.preventDefault(); // Prevent the default context menu
+        //event.preventDefault(); // Prevent the default context menu
 
         if (event.button === 0) { // Left mouse button
             style.innerHTML = `
