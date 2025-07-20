@@ -27,6 +27,8 @@
     baseImg.style.position = 'fixed';
     baseImg.style.top = '50%';
     baseImg.style.left = '50%';
+    baseImg.style.width = '100%';
+    baseImg.style.height = '100%';
     baseImg.style.transform = 'translate(-50%, -50%)';
     baseImg.style.pointerEvents = 'none';
     baseImg.style.zIndex = 999;
@@ -38,6 +40,8 @@
     overlayImg.style.position = 'fixed';
     overlayImg.style.top = '50%';
     overlayImg.style.left = '50%';
+    overlayImg.style.width = '100%';
+    overlayImg.style.height = '100%';
     overlayImg.style.transform = 'translate(-50%, -50%)';
     overlayImg.style.pointerEvents = 'none';
     overlayImg.style.zIndex = 1000;
@@ -55,6 +59,7 @@
     container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
     container.style.color = 'white';
     container.style.fontFamily = 'Arial, sans-serif';
+    container.style.fontSize = '15px';
     container.style.display = 'none';
     container.style.flexDirection = 'column';
     document.body.appendChild(container);
@@ -72,13 +77,14 @@
     const label = document.createElement('div');
     label.innerText = 'Scatter Zone Indicator by A-76 (DC: anuryx.)';
     label.style.fontWeight = 'bold';
-    label.style.fontSize = '20px';
+    label.style.fontSize = '15px';
     label.style.color = '#BC13FE';
     label.style.marginBottom = '10px';
     zoneSection.appendChild(label);
 
     const zoneLabel = document.createElement('div');
     zoneLabel.innerText = 'Select Scatter Zone Size:';
+    zoneLabel.style.fontSize = '12px';
     zoneLabel.style.fontWeight = 'bold';
     zoneLabel.style.margin = '5px';
     zoneSection.appendChild(zoneLabel);
@@ -95,6 +101,7 @@
         button.style.margin = '5px 0';
         button.style.padding = '10px 15px';
         button.style.color = 'white';
+        button.style.fontSize = '10px';
         button.style.backgroundColor = '#08103A';
         button.style.border = 'solid 1px #5BA2C6';
         button.style.borderRadius = '5px';
@@ -134,6 +141,7 @@
     toggleBaseImageButton.style.margin = '5px 0';
     toggleBaseImageButton.style.padding = '10px 15px';
     toggleBaseImageButton.style.color = 'white';
+    toggleBaseImageButton.style.fontSize = '10px';
     toggleBaseImageButton.style.backgroundColor = '#08103A';
     toggleBaseImageButton.style.border = 'solid 1px #BC13FE';
     toggleBaseImageButton.style.borderRadius = '5px';
@@ -159,6 +167,7 @@
     toggleOverlayButton.style.margin = '5px 0';
     toggleOverlayButton.style.padding = '10px 15px';
     toggleOverlayButton.style.color = 'white';
+    toggleOverlayButton.style.fontSize = '10px';
     toggleOverlayButton.style.backgroundColor = '#08103A';
     toggleOverlayButton.style.border = 'solid 1px #BD46FC';
     toggleOverlayButton.style.borderRadius = '2px';
@@ -186,6 +195,7 @@
     darkModeButton.style.margin = '5px 0';
     darkModeButton.style.padding = '10px 15px';
     darkModeButton.style.color = 'white';
+    darkModeButton.style.fontSize = '10px';
     darkModeButton.style.backgroundColor = '#08103A';
     darkModeButton.style.border = 'solid 1px #BF79FA';
     darkModeButton.style.borderRadius = '5px';
@@ -216,6 +226,7 @@
     pentaModeButton.style.margin = '5px 0';
     pentaModeButton.style.padding = '10px 15px';
     pentaModeButton.style.color = 'white';
+    pentaModeButton.style.fontSize = '10px';
     pentaModeButton.style.backgroundColor = '#08103A';
     pentaModeButton.style.border = 'solid 1px #C0ABF8';
     pentaModeButton.style.borderRadius = '5px';
@@ -246,6 +257,7 @@
     toggleImagesButton.style.margin = '5px 0';
     toggleImagesButton.style.padding = '10px 15px';
     toggleImagesButton.style.color = 'white';
+    toggleImagesButton.style.fontSize = '10px';
     toggleImagesButton.style.backgroundColor = '#08103A';
     toggleImagesButton.style.border = 'solid 1px #C1DEF6';
     toggleImagesButton.style.borderRadius = '5px';
