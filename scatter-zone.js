@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Spread bullets not hate
+// @name         Spread Bullets Not Hate
 // @namespace    http://tampermonkey.net/
 // @version      2.5
 // @description  Scatter zone indicator for Diep.io, refer to each tank's "Bullet Scatter Rate" in https://diepwiki.io/#/tanks/
