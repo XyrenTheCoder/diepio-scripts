@@ -2,7 +2,7 @@
 // @name         Spread Bullets Not Hate
 // @namespace    http://tampermonkey.net/
 // @version      2.5
-// @description  Scatter zone indicator for Diep.io, refer to each tank's "Bullet Scatter Rate" in https://diepwiki.io/#/tanks/
+// @description  Press ALT+P to open menu. Scatter zone indicator for Diep.io, refer to each tank's "Bullet Scatter Rate" in https://diepwiki.io/#/tanks/
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://*.diep.io/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=diep.io
