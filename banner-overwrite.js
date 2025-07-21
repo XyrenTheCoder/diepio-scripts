@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Diep.io Banner Overwrite
 // @namespace    http://tampermonkey.net/
-// @version      2.51
+// @version      2.6
 // @description  Replace with my banner on diep.io after the page loads. Press ALT+B to hide/ toggle UI.
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
