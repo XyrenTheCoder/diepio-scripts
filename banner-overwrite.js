@@ -2,7 +2,7 @@
 // @name         Diep.io Banner Overwrite
 // @namespace    http://tampermonkey.net/
 // @version      2.5
-// @description  Replace with my banner on diep.io after the page loads. Press ALT+P to hide/ toggle UI.
+// @description  Replace with my banner on diep.io after the page loads. Press ALT+B to hide/ toggle UI.
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://diep.io/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=diep.io
@@ -123,7 +123,7 @@
     document.body.appendChild(container);
 
     window.addEventListener('keydown', (event) => {
-        if (event.altKey && event.key === 'p') {
+        if (event.altKey && event.key === 'b') {
             event.preventDefault();
             toggleUI();
         }
