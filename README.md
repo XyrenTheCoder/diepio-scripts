@@ -2,8 +2,6 @@
 
 - [Diep Theme by Clever Yeti](https://github.com/CleverYeti/diep-themes/blob/main/diep-themes.js)
 
-- Multibox and FOV script from [AR]
-
 ## Customised
 
 - Banner Overwrite
@@ -15,3 +13,5 @@
 - Show FPS and Disable Predict Movement
 
 - Scatter Zone
+
+- Quick Open FFA and TDMs Diep.io Lobby
