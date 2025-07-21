@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Spread Bullets Not Hate
 // @namespace    http://tampermonkey.net/
-// @version      2.5
+// @version      2.8
 // @description  Press ALT+P to open menu. Scatter zone indicator for Diep.io, refer to each tank's "Bullet Scatter Rate" in https://diepwiki.io/#/tanks/
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
 // @match        *://*.diep.io/*
@@ -124,6 +124,35 @@
         zoneSection.appendChild(button);
     });
 
+    const sliderContainer = document.createElement('div');
+    sliderContainer.style.margin = '5px';
+    container.appendChild(sliderContainer);
+
+    const opacityLabel = document.createElement('label');
+    opacityLabel.innerText = 'Adjust Opacity:';
+    opacityLabel.style.color = 'white';
+    opacityLabel.style.margin = '10px';
+    opacityLabel.style.fontSize = '12px';
+    opacityLabel.style.lineHeight = '12px';
+    sliderContainer.appendChild(opacityLabel);
+
+    const opacitySlider = document.createElement('input');
+    opacitySlider.type = 'range';
+    opacitySlider.min = '0';
+    opacitySlider.max = '1';
+    opacitySlider.step = '0.1';
+    opacitySlider.value = '1';
+    opacitySlider.style.margin = '5px';
+    opacitySlider.style.backgroundColor = '#B0E0E6';
+
+    opacitySlider.oninput = () => {
+        const opacityValue = opacitySlider.value;
+        baseImg.style.opacity = opacityValue;
+        overlayImg.style.opacity = opacityValue;
+    };
+
+    sliderContainer.appendChild(opacitySlider);
+
     const zoneFooter = document.createElement('div');
     zoneFooter.innerText = '(Refer to [Modernised Diep Wiki] by Clever Yeti || https://diepwiki.io/)';
     zoneFooter.style.fontSize = '10px';
@@ -189,7 +218,6 @@
 
     otherButtonsSection.appendChild(toggleOverlayButton);
 
-    // Button for toggling dark mode
     const darkModeButton = document.createElement('button');
     darkModeButton.innerText = 'Toggle Dark Mode';
     darkModeButton.style.margin = '5px 0';
