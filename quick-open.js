@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Quick open FFA and TDMs Diep.io Lobby
+// @name         Quick Open FFA and TDMs Diep.io Lobby
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Opens ffa and tdm links based on lobby data.  (12 Tabs)
