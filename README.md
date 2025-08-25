@@ -4,6 +4,8 @@
 
 - Gradient Name by shlong#2873
 
+- Protest Riot Font by Elijaah & Acc1
+
 ## Customised
 
 - Banner Overwrite
