@@ -6,6 +6,8 @@
 
 - Protest Riot Font by Elijaah & Acc1
 
+- Diep.io Script by Rbest & Mikey
+
 ## Customised
 
 - Banner Overwrite
