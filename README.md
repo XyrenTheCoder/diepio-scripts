@@ -6,4 +6,4 @@
 
 - Protest Riot Font by Elijaah & Acc1
 
-- Diep.io Script by Rbest & Mikey
+- rbest Diep.io Script by rbest & Mikey
