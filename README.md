@@ -1,4 +1,4 @@
-# Credits
+# Credits for others scripts listed
 
 - [Diep Theme by Clever Yeti](https://github.com/CleverYeti/diep-themes/blob/main/diep-themes.js)
 
@@ -7,17 +7,3 @@
 - Protest Riot Font by Elijaah & Acc1
 
 - Diep.io Script by Rbest & Mikey
-
-## Customised
-
-- Banner Overwrite
-
-- Cosmetic Overlay
-
-- Custom Cursor
-  
-- Show FPS and Disable Predict Movement
-
-- Scatter Zone
-
-- Quick Open FFA and TDMs Diep.io Lobby
