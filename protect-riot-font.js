@@ -2,7 +2,7 @@
 // @name         [🪐] Font For Diep.io
 // @version      1.1.0
 // @description  Force Protest Riot font on diep.io
-// @author       Solar
+// @author       Elijaah & Acc1, A-76
 // @match        https://diep.io/*
 // @run-at       document-start
 // @grant        unsafeWindow
