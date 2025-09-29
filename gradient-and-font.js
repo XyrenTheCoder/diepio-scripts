@@ -2,7 +2,7 @@
 // @name         A A A Diep.io Gradient Name, Change Font
 // @version      0.1
 // @description  Gradient name and font in one script
-// @author       shlong#2873, Elijaah & Acc1, Edited and Merged by A-76
+// @author       shlong#2873, Elijaah & Acc1, Edited and Merged by A-76, Solar
 // @match        *://diep.io/*
 // @run-at       document-start
 // @grant        unsafeWindow
