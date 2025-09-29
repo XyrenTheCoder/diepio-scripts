@@ -6,6 +6,6 @@
 
 - Gradient Name by shlong#2873
 
-- Protest Riot Font by Elijaah & Acc1, Solar
+- Protest Riot Font originally by Elijaah & Acc1
 
 - rbest Diep.io Script by rbest & Mikey
