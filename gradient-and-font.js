@@ -130,7 +130,7 @@
                         },
                         set(target, prop, value) {
                             if (prop === "font" && typeof value === "string") {
-                                value = value.replace(/Ubuntu|sans-serif/gi, "'Protest Riot'");
+                                value = value.replace(/Ubuntu|sans-serif/gi, "'Diphylleia'");
                             }
                             target[prop] = value;
                             return true;
