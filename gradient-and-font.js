@@ -67,13 +67,15 @@
     
     const fontLink = document.createElement("link");
     fontLink.rel = "stylesheet";
-    fontLink.href = "https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap";
+    fontLink.href = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
     document.head.appendChild(fontLink);
+
     GM_addStyle(`
         body, * {
-            font-family: 'Protest Riot', sans-serif !important;
+            font-family: "Diphylleia", serif !important;
         }
     `);
+
     let a;
     class _a {
         constructor() {
