@@ -49,11 +49,32 @@
                 button.style.width = '100%';
                 button.style.marginBottom = '5px';
                 button.style.padding = '5px';
-                button.style.backgroundColor = 'black';
                 button.style.color = 'white';
-                button.style.border = '1px solid blue';
                 button.style.borderRadius = '5px';
+                button.style.border = '1px solid #437fff';
+                button.style.backgroundColor = '#0a1429';
                 button.style.cursor = 'pointer';
+
+                if (lobby.gamemode == 'teams') {
+                    button.style.border = '1px solid #82ff43';
+                    button.style.backgroundColor = '#1b360e';
+                }
+                if (lobby.gamemode == '4teams') {
+                    button.style.border = '1px solid #ff4343';
+                    button.style.backgroundColor = '#3b0f0f';
+                }
+                if (lobby.gamemode == 'ffa') {
+                    button.style.border = '1px solid #43fff9';
+                    button.style.backgroundColor = '#0e3634';
+                }
+                if (lobby.gamemode == 'maze') {
+                    button.style.border = '1px solid #ffde43';
+                    button.style.backgroundColor = '#332c0e';
+                }
+                if (lobby.gamemode == 'sandbox') {
+                    button.style.border = '1px solid #8543ff';
+                    button.style.backgroundColor = '#1b0e33';
+                }
 
                 const baseUrl = `https://diep.io/?lobby=${region.region}_${lobby.gamemode}_${lobby.ip}`;
 
