@@ -34,7 +34,7 @@
         regions.forEach(region => {
             const regionTitle = document.createElement('h6');
             regionTitle.style.fontSize = '80%';
-            regionTitle.style.color = 'grey';
+            regionTitle.style.color = '#ccc';
             regionTitle.style.margin = '10%';
             regionTitle.innerText = region.regionName;
             container.appendChild(regionTitle);
@@ -53,7 +53,7 @@
                 button.style.borderRadius = '5px';
                 button.style.border = '2px solid #437fff';
                 button.style.boxShadow = '0 0 8px #437fff';
-                button.style.backgroundColor = 'black';
+                button.style.backgroundColor = '#292929';
                 button.style.cursor = 'pointer';
                 button.style.transition = 'box-shadow 0.3s ease';
 
