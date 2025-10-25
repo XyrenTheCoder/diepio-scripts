@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Quick Open FFA and TDMs Diep.io Lobby
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Opens ffa and tdm links based on lobby data.  (12 Tabs)
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
-// @match        https://codepen.io/cleveryeti/pen/KKOOwOq
+// @match        https://dieplobbypicker.io/
 // @match        *://diep.io/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=diep.io
 // @grant        none
@@ -23,7 +23,7 @@
             // Process fetched data
             data.regions.forEach(region => {
                 region.lobbies.forEach(lobby => {
-                    const baseUrl = `https://diep.io/?s=${lobby.ip}&g=${lobby.gamemode}`;
+                    const baseUrl = `https://diep.io/?lobby=${region.region}_${lobby.gamemode}_${lobby.ip}`;
                     if (lobby.gamemode === "ffa") {
                         ffalinks.push(baseUrl);
                     } else if (lobby.gamemode === "teams") {
