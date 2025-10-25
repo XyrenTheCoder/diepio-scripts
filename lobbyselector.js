@@ -51,35 +51,34 @@
                 button.style.padding = '5px';
                 button.style.color = 'white';
                 button.style.borderRadius = '5px';
-                button.style.borderWidth = '2px';
-                button.style.borderStyle = 'solid';
+                button.style.border = 'none';
                 button.style.cursor = 'pointer';
                 button.style.transition = 'box-shadow 0.3s ease';
                 button.style.backgroundColor = '#1f1f1f';
-                button.style.boxShadow = '0 0 8px rgba(0, 0, 0, 0.5)'; // General shadow
+                button.style.boxShadow = '0 0 8px rgba(0, 0, 0, 0.5)';
 
-                // Apply gradient borders based on gamemode
+                // Apply background based on gamemode
                 if (lobby.gamemode == 'teams') {
-                    button.style.borderImage = 'linear-gradient(to top right, hsl(165.625 39.669% 52.549%), hsl(118.681 40.444% 55.882%), hsl(86.667 48.293% 59.804%)) 1';
+                    button.style.backgroundImage = 'linear-gradient(to top right, hsl(165.625 39.669% 52.549%), hsl(118.681 40.444% 55.882%), hsl(86.667 48.293% 59.804%))';
                     button.style.boxShadow = '0 0 8px #82ff43';
                 }
                 else if (lobby.gamemode == '4teams') {
-                    button.style.borderImage = 'linear-gradient(to top right, hsl(0 88.732% 53.235%), hsl(20 81.522% 63.922%)) 1'; // --red
+                    button.style.backgroundImage = 'linear-gradient(to top right, hsl(0 88.732% 53.235%), hsl(20 81.522% 63.922%))';
                     button.style.boxShadow = '0 0 8px #ff4343';
                 }
                 else if (lobby.gamemode == 'ffa') {
-                    button.style.borderImage = 'linear-gradient(to top right, hsl(210.683 88.732% 58.235%), hsl(190 81.522% 63.922%)) 1'; // --lightblue
+                    button.style.backgroundImage = 'linear-gradient(to top right, hsl(210.683 88.732% 58.235%), hsl(190 81.522% 63.922%))';
                     button.style.boxShadow = '0 0 8px #43fff9';
                 }
                 else if (lobby.gamemode == 'maze') {
-                    button.style.borderImage = 'linear-gradient(to top right, hsl(18 calc(1 * 81.522%) 63.922% / 1), hsl(39.683 calc(1 * 88.732%) 58.235% / 1)) 1'; // --orange
+                    button.style.backgroundImage = 'linear-gradient(to top right, hsl(18 calc(1 * 81.522%) 63.922% / 1), hsl(39.683 calc(1 * 88.732%) 58.235% / 1))';
                     button.style.boxShadow = '0 0 8px #ffde43';
                 }
                 else if (lobby.gamemode == 'sandbox') {
-                    button.style.borderImage = 'linear-gradient(to top right, hsl(270.683 88.732% 53.235%), hsl(300 81.522% 63.922%)) 1';
+                    button.style.backgroundImage = 'linear-gradient(to top right, hsl(270.683 88.732% 53.235%), hsl(300 81.522% 63.922%))';
                     button.style.boxShadow = '0 0 8px #8543ff';
                 } else {
-                    button.style.borderImage = 'linear-gradient(to top right, hsl(228.683 88.732% 53.235%), hsl(252 81.522% 63.922%)) 1';
+                    button.style.backgroundImage = 'linear-gradient(to top right, hsl(228.683 88.732% 53.235%), hsl(252 81.522% 63.922%))';
                     button.style.boxShadow = '0 0 8px #437fff';
                 }
 
