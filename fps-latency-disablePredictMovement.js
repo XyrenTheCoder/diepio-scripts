@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Diep.io FPS Counter and Disable Movement Prediction
+// @name         Diep.io FPS Counter, show latency and Disable Movement Prediction
 // @version      1.0.0
 // @description  Script for diep.io
 // @author       Discord: anuryx. (Github: XyrenTheCoder)
@@ -14,6 +14,7 @@
     const loadInterval = setInterval(() => {
         if(window.input) {
             window.input.set_convar("ren_fps", true);
+            window.input.set_convar("ren_latency", true);
             window.input.set_convar("net_predict_movement", false);
             clearInterval(loadInterval);
         }
