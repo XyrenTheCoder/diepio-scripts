@@ -1,19 +1,39 @@
 // ==UserScript==
-// @name        Diep.io Ratio Calculator
-// @version     1.0
-// @description Shows PPM (Points Per Minute) ratio on death
+// @name        Diep.io Ratio Script
+// @version     1.2
+// @description Shows in-game timer and PPM (Points Per Minute) ratio on death
 // @author      A-76    Discord: anuryx. (Github: XyrenTheCoder)
 // @match       *://diep.io/*
 // @grant       none
 // ==/UserScript==
 
-class RatioCalculator {
+class TimerRatioCalculator {
     constructor() {
         this._elapsedTime = 0;
         this._elapsedTimerInterval = null;
         this._finalScore = 0;
 
+        this.timerDisplay = null;
+        this._initTimer();
         this._observeScreenChanges();
+    }
+
+    _initTimer() {
+        this.timerDisplay = document.createElement('div');
+        this.timerDisplay.textContent = '00:00:00';
+        this.timerDisplay.style.cssText = 'position:fixed;top:24.75px;left:150px;color:white;font:bold 18px monospace;z-index:99999;';
+        document.body.appendChild(this.timerDisplay);
+    }
+
+    _updateTimerDisplay() {
+        const hours = Math.floor(this._elapsedTime / 3600);
+        const minutes = Math.floor((this._elapsedTime % 3600) / 60);
+        const seconds = this._elapsedTime % 60;
+
+        this.timerDisplay.textContent =
+            `${hours.toString().padStart(2,'0')}:` +
+            `${minutes.toString().padStart(2,'0')}:` +
+            `${seconds.toString().padStart(2,'0')}`;
     }
 
     _observeScreenChanges() {
@@ -35,6 +55,7 @@ class RatioCalculator {
             if (homeActive) {
                 this.resetElapsedTimer();
                 this._finalScore = 0;
+                this.timerDisplay.textContent = '00:00:00';
             } else if (inGameActive) {
                 this.startElapsedTimer();
             } else if (gameOverActive) {
@@ -86,10 +107,12 @@ class RatioCalculator {
         }
 
         this._elapsedTime = 0;
+        this._updateTimerDisplay();
 
         setTimeout(() => {
             this._elapsedTimerInterval = setInterval(() => {
                 this._elapsedTime++;
+                this._updateTimerDisplay();
             }, 1000);
         }, 1000);
     }
@@ -104,6 +127,7 @@ class RatioCalculator {
     resetElapsedTimer() {
         this.stopElapsedTimer();
         this._elapsedTime = 0;
+        this._updateTimerDisplay();
     }
 
     _extractFinalScore() {
@@ -160,9 +184,7 @@ class RatioCalculator {
                     existingRatio.remove();
                 }
 
-                let displayText = '';
-              
-                displayText = `${ppm.toLocaleString()} ppm`;
+                const displayText = `${ppm.toLocaleString()} ppm`;
 
                 const ratioDiv = document.createElement('div');
                 ratioDiv.className = 'game-detail ratio-display';
@@ -177,4 +199,4 @@ class RatioCalculator {
     }
 }
 
-let ratioCalculator = new RatioCalculator();
+let timerRatioCalculator = new TimerRatioCalculator();
